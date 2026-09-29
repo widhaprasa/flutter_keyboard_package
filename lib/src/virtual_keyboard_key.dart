@@ -35,10 +35,7 @@ class VirtualKeyboardKey {
     this.child,
     this.flex = 1,
     this.alwaysLowercase = false,
-  }) : assert(
-         action != VirtualKeyboardKeyAction.actionText || text != null,
-         'A text key must have a text value.',
-       );
+  });
 
   /// The text to display and insert when the key is pressed.
   /// Mandatory if [action] is [VirtualKeyboardKeyAction.actionText].

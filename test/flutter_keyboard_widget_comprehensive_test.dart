@@ -2,114 +2,120 @@ import 'package:flutter/material.dart';
 import 'package:future_keyboard_kit/future_keyboard_kit.dart';
 import 'package:flutter_test/flutter_test.dart';
 
+class _LayoutCase {
+  const _LayoutCase({
+    required this.name,
+    required this.layout,
+    required this.tapText,
+    required this.expected,
+  });
+
+  final String name;
+  final VirtualKeyboardLayout layout;
+  final String tapText;
+  final String expected;
+}
+
 void main() {
   group('comprehensive widget coverage', () {
-    final layoutCases =
-        <
-          ({
-            String name,
-            VirtualKeyboardLayout layout,
-            String tapText,
-            String expected,
-          })
-        >[
-          (
-            name: 'numeric',
-            layout: VirtualKeyboardLayout.numeric(),
-            tapText: '1',
-            expected: '1',
-          ),
-          (
-            name: 'numericDecimal',
-            layout: VirtualKeyboardLayout.numericDecimal(),
-            tapText: '.',
-            expected: '.',
-          ),
-          (
-            name: 'alphanumeric',
-            layout: VirtualKeyboardLayout.alphanumeric(),
-            tapText: 'q',
-            expected: 'q',
-          ),
-          (
-            name: 'alphabetic',
-            layout: VirtualKeyboardLayout.alphabetic(),
-            tapText: 'a',
-            expected: 'a',
-          ),
-          (
-            name: 'specialCharacters',
-            layout: VirtualKeyboardLayout.specialCharacters(),
-            tapText: '1',
-            expected: '1',
-          ),
-          (
-            name: 'specialCharactersSecondary',
-            layout: VirtualKeyboardLayout.specialCharactersSecondary(),
-            tapText: '[',
-            expected: '[',
-          ),
-          (
-            name: 'email',
-            layout: VirtualKeyboardLayout.email(),
-            tapText: '@',
-            expected: '@',
-          ),
-          (
-            name: 'url',
-            layout: VirtualKeyboardLayout.url(),
-            tapText: '/',
-            expected: '/',
-          ),
-          (
-            name: 'phone',
-            layout: VirtualKeyboardLayout.phone(),
-            tapText: '*',
-            expected: '*',
-          ),
-          (
-            name: 'hexadecimal',
-            layout: VirtualKeyboardLayout.hexadecimal(),
-            tapText: 'a',
-            expected: 'a',
-          ),
-          (
-            name: 'calculator',
-            layout: VirtualKeyboardLayout.calculator(),
-            tapText: '7',
-            expected: '7',
-          ),
-          (
-            name: 'otp',
-            layout: VirtualKeyboardLayout.otp(),
-            tapText: '1',
-            expected: '1',
-          ),
-          (
-            name: 'date',
-            layout: VirtualKeyboardLayout.date(),
-            tapText: '/',
-            expected: '/',
-          ),
-          (
-            name: 'time',
-            layout: VirtualKeyboardLayout.time(),
-            tapText: 'AM',
-            expected: 'AM',
-          ),
-          (
-            name: 'currency',
-            layout: VirtualKeyboardLayout.currency(),
-            tapText: '\$',
-            expected: '\$',
-          ),
-          (
-            name: 'scientificCalculator',
-            layout: VirtualKeyboardLayout.scientificCalculator(),
-            tapText: '^',
-            expected: '^',
-          ),
-        ];
+    final layoutCases = <_LayoutCase>[
+      _LayoutCase(
+        name: 'numeric',
+        layout: VirtualKeyboardLayout.numeric(),
+        tapText: '1',
+        expected: '1',
+      ),
+      _LayoutCase(
+        name: 'numericDecimal',
+        layout: VirtualKeyboardLayout.numericDecimal(),
+        tapText: '.',
+        expected: '.',
+      ),
+      _LayoutCase(
+        name: 'alphanumeric',
+        layout: VirtualKeyboardLayout.alphanumeric(),
+        tapText: 'q',
+        expected: 'q',
+      ),
+      _LayoutCase(
+        name: 'alphabetic',
+        layout: VirtualKeyboardLayout.alphabetic(),
+        tapText: 'a',
+        expected: 'a',
+      ),
+      _LayoutCase(
+        name: 'specialCharacters',
+        layout: VirtualKeyboardLayout.specialCharacters(),
+        tapText: '1',
+        expected: '1',
+      ),
+      _LayoutCase(
+        name: 'specialCharactersSecondary',
+        layout: VirtualKeyboardLayout.specialCharactersSecondary(),
+        tapText: '[',
+        expected: '[',
+      ),
+      _LayoutCase(
+        name: 'email',
+        layout: VirtualKeyboardLayout.email(),
+        tapText: '@',
+        expected: '@',
+      ),
+      _LayoutCase(
+        name: 'url',
+        layout: VirtualKeyboardLayout.url(),
+        tapText: '/',
+        expected: '/',
+      ),
+      _LayoutCase(
+        name: 'phone',
+        layout: VirtualKeyboardLayout.phone(),
+        tapText: '*',
+        expected: '*',
+      ),
+      _LayoutCase(
+        name: 'hexadecimal',
+        layout: VirtualKeyboardLayout.hexadecimal(),
+        tapText: 'a',
+        expected: 'a',
+      ),
+      _LayoutCase(
+        name: 'calculator',
+        layout: VirtualKeyboardLayout.calculator(),
+        tapText: '7',
+        expected: '7',
+      ),
+      _LayoutCase(
+        name: 'otp',
+        layout: VirtualKeyboardLayout.otp(),
+        tapText: '1',
+        expected: '1',
+      ),
+      _LayoutCase(
+        name: 'date',
+        layout: VirtualKeyboardLayout.date(),
+        tapText: '/',
+        expected: '/',
+      ),
+      _LayoutCase(
+        name: 'time',
+        layout: VirtualKeyboardLayout.time(),
+        tapText: 'AM',
+        expected: 'AM',
+      ),
+      _LayoutCase(
+        name: 'currency',
+        layout: VirtualKeyboardLayout.currency(),
+        tapText: '\$',
+        expected: '\$',
+      ),
+      _LayoutCase(
+        name: 'scientificCalculator',
+        layout: VirtualKeyboardLayout.scientificCalculator(),
+        tapText: '^',
+        expected: '^',
+      ),
+    ];
 
     for (final c in layoutCases) {
       testWidgets('${c.name} inserts tapped key text', (tester) async {
